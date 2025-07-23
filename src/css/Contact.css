@@ -1,0 +1,36 @@
+.text-field {
+  position: relative;
+  margin: 10px 2.5px 20px 2.5px;
+}
+
+input {
+  display: inline-block;
+  border: transparent;
+  border-bottom: solid medium #999;
+  color: #f0f0f0;
+  padding: 10px 10px 10px 10px;
+  background: transparent;
+  outline: none;
+}
+
+label {
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 10px;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+  top: -25px;
+  left: 15px;
+  font-size: small;
+  color: #f0f0f0;
+  padding: 0 5px 0 5px;
+}

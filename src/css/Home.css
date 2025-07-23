@@ -1,0 +1,25 @@
+.star-icon::after,
+.star-icon::before {
+  content: "";
+  position: absolute;
+  width: 15%;
+  height: 10px;
+  top: 50%;
+  border-top: 3px #fff solid;
+}
+
+.star-icon::after {
+  left: 33%;
+}
+.star-icon::before {
+  right: 33%;
+}
+
+@media screen and (max-width: 480px) {
+  .star-icon::after {
+  left: 30%;
+}
+.star-icon::before {
+  right: 30%;
+}
+}
