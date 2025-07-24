@@ -13,7 +13,7 @@ export default function Portfolio() {
 
   const [isOpen, setIsOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState(null);
-  let [imageIndex, setImageIndex] = useState(0);
+  const [imageIndex, setImageIndex] = useState(0);
 
   const pics = [
     { id: 1, src: Image1 },
@@ -24,8 +24,9 @@ export default function Portfolio() {
     { id: 6, src: Image1 }
   ]
 
-  const handleImageClick = (imageSrc) => {
-    setSelectedImage(imageSrc);
+  const handleImageClick = (index) => {
+    setImageIndex(index);
+    setSelectedImage(pics[index].src);
     setIsOpen(true);
   };
 
@@ -35,19 +36,21 @@ export default function Portfolio() {
   };
 
   let handleNext = () => {
-    imageIndex++
-    if (imageIndex >= pics.length) {
-      imageIndex = 0
+    let nextIndex = imageIndex + 1;
+    if (nextIndex >= pics.length) {
+      nextIndex = 0;
     }
-    setSelectedImage(pics[imageIndex].src)
+    setImageIndex(nextIndex);
+    setSelectedImage(pics[nextIndex].src);
   }
 
   let handlePrev = () => {
-    imageIndex--
-    if (imageIndex < 0) {
-      imageIndex = pics.length - 1
+    let prevIndex = imageIndex - 1;
+    if (prevIndex < 0) {
+      prevIndex = pics.length - 1;
     }
-    setSelectedImage(pics[imageIndex].src)
+    setImageIndex(prevIndex);
+    setSelectedImage(pics[prevIndex].src);
   }
 
   return (
@@ -58,11 +61,11 @@ export default function Portfolio() {
           <FontAwesomeIcon icon={faStar} className="text-white" />
         </div>
         <div className="row g-3">
-          {pics.map((pic) => {
+          {pics.map((pic, index) => {
             return (
               <div key={pic.id} className="col-12 col-lg-4">
                 <div className="w-100 position-relative portfolio-demo">
-                  <div className="icon position-absolute rounded d-flex justify-content-center align-items-center" onClick={() => handleImageClick(`${pic.src}`)}>
+                  <div className="icon position-absolute rounded d-flex justify-content-center align-items-center" onClick={() => handleImageClick(index)}>
                     <FontAwesomeIcon icon={faPlus} className='font-icon fs-5 text-white' />
                   </div>
                   <img src={pic.src} alt="bg Img portfolio" className="w-100 rounded" />
